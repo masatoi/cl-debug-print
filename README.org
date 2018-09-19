@@ -1,8 +1,37 @@
-* Cl-Debug-Print 
+* cl-debug-print
 
 ** Usage
 #+BEGIN_SRC lisp
 (ql:quickload :cl-debug-print)
 
-(cl-syntax:use-syntax :cl-debug-print)
+(cl-syntax:use-syntax cl-debug-print:debug-print-syntax)
+
+(defun fact (n)
+  (if (= #>n 0)
+      1
+      (* n #>(fact (1- n)))))
+
+(fact 10)
+
+;; N => 10
+;; N => 9
+;; N => 8
+;; N => 7
+;; N => 6
+;; N => 5
+;; N => 4
+;; N => 3
+;; N => 2
+;; N => 1
+;; N => 0
+;; (FACT (1- N)) => 1
+;; (FACT (1- N)) => 1
+;; (FACT (1- N)) => 2
+;; (FACT (1- N)) => 6
+;; (FACT (1- N)) => 24
+;; (FACT (1- N)) => 120
+;; (FACT (1- N)) => 720
+;; (FACT (1- N)) => 5040
+;; (FACT (1- N)) => 40320
+;; (FACT (1- N)) => 362880
 #+END_SRC
