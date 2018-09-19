@@ -1,0 +1,8 @@
+* Cl-Debug-Print 
+
+** Usage
+#+BEGIN_SRC lisp
+(ql:quickload :cl-debug-print)
+
+(cl-syntax:use-syntax :cl-debug-print)
+#+END_SRC
