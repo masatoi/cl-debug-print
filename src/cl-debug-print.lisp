@@ -1,11 +1,11 @@
 (defpackage cl-debug-print
-  (:use :cl :cl-syntax)
-  (:export :debug-print :debug-print-reader)
+  (:use :cl :cl-syntax :named-readtables)
+  (:export :debug-print :debug-print-reader :debug-print-syntax))
 (in-package :cl-debug-print)
 
 (defun debug-print (pre-exp exp)
-    (format *standard-output* "~A => ~A~%" pre-exp exp)
-    exp)
+  (format *standard-output* "~A => ~A~%" pre-exp exp)
+  exp)
 
 (defun debug-print-reader (stream char1 char2)
   (declare (ignore char1 char2))
@@ -13,4 +13,5 @@
     `(debug-print (quote ,read-data) ,read-data)))
 
 (defsyntax debug-print-syntax
-    (:dispatch-macro-character #\# #\> #'debug-print-reader))
+  (:merge :standard)
+  (:dispatch-macro-char #\# #\> #'debug-print-reader))
