@@ -1,4 +1,5 @@
 (defpackage cl-debug-print
+  (:nicknames :debug-print)
   (:use :cl :cl-syntax :named-readtables)
   (:export :debug-print :debug-print-reader :debug-print-syntax))
 (in-package :cl-debug-print)
