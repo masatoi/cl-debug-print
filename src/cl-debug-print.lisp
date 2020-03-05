@@ -13,7 +13,7 @@
 (in-package :cl-debug-print)
 
 (defun debug-print (pre-exp exp)
-  (format *standard-output* "~A => ~A~%" pre-exp exp)
+  (format *standard-output* "~S => ~S~%" pre-exp exp)
   exp)
 
 (defun debug-print-reader (stream char1 char2)
