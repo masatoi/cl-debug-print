@@ -1,9 +1,19 @@
 * cl-debug-print
 
+A reader macro package for debug printing.
+
+** Install
+
+When install by Roswell,
+
+#+begin_src
+ros install masatoi/cl-debug-print
+#+end_src
+
 ** Usage
+
 #+BEGIN_SRC lisp
 (ql:quickload :cl-debug-print)
-
 (cl-syntax:use-syntax cl-debug-print:debug-print-syntax)
 
 ;;; Debug print
@@ -47,10 +57,14 @@
 (fact2 10)
 ;; => 3628800
 
+;;; Debug push results are stored to *dbg*
+
 debug-print:*dbg*
 ;; => (362880 40320 5040 720 120 24 6 2 1 1)
 
-(debug-print:init-dbg)
+;;; Clearing debug push list
+
+(debug-print:clear-dbg)
 debug-print:*dbg*
 ;; => nil
 #+END_SRC
