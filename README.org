@@ -68,3 +68,37 @@ debug-print:*dbg*
 debug-print:*dbg*
 ;; => nil
 #+END_SRC
+
+*** Configure variables
+
+#+begin_src lisp
+;;; Setting destination stream
+(setf cl-debug-print:*destination* *error-output*)
+
+;;; Setting for using DESCRIBE instead of mere value
+(setf cl-debug-print:*use-describe* t)
+
+#>'sin
+
+;; 'SIN => COMMON-LISP:SIN
+;;   [symbol]
+;;
+;; SIN names a compiled function:
+;;   Lambda-list: (NUMBER)
+;;   Declared type: (FUNCTION (NUMBER)
+;;                   (VALUES
+;;                    (OR (SINGLE-FLOAT -1.0 1.0)
+;;                        (DOUBLE-FLOAT -1.0d0 1.0d0)
+;;                        (COMPLEX SINGLE-FLOAT) (COMPLEX DOUBLE-FLOAT))
+;;                    &OPTIONAL))
+;;   Derived type: (FUNCTION (T)
+;;                  (VALUES
+;;                   (OR (SINGLE-FLOAT -1.0 1.0)
+;;                       (DOUBLE-FLOAT -1.0d0 1.0d0)
+;;                       (COMPLEX DOUBLE-FLOAT) (COMPLEX SINGLE-FLOAT))
+;;                   &OPTIONAL))
+;;   Documentation:
+;;     Return the sine of NUMBER.
+;;   Known attributes: foldable, flushable, unsafely-flushable, movable, recursive
+;;   Source file: SYS:SRC;CODE;IRRAT.LISP
+#+end_src
