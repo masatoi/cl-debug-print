@@ -59,23 +59,26 @@ ros install masatoi/cl-debug-print
 
 ;;; Debug push results are stored to *dbg*
 
-debug-print:*dbg*
+cl-debug-print:*dbg*
 ;; => (362880 40320 5040 720 120 24 6 2 1 1)
 
 ;;; Clearing debug push list
 
-(debug-print:clear-dbg)
-debug-print:*dbg*
+(cl-debug-print:clear-dbg)
+
+cl-debug-print:*dbg*
 ;; => nil
 #+END_SRC
 
 *** Configure variables
 
 #+begin_src lisp
-;;; Setting destination stream
+;;; Setting destination stream (default value is *standard-output*)
+
 (setf cl-debug-print:*destination* *error-output*)
 
-;;; Setting for using DESCRIBE instead of mere value
+;;; Setting for using DESCRIBE instead of mere value (default value is nil)
+
 (setf cl-debug-print:*use-describe* t)
 
 #>'sin
