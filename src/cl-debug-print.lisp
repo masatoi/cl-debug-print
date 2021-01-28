@@ -8,7 +8,7 @@
            #:debug-push
            #:debug-push-reader
            #:*dbg*
-           #:init-dbg
+           #:clear-dbg
            #:debug-print-syntax))
 (in-package :cl-debug-print)
 
@@ -23,7 +23,7 @@
 
 (defvar *dbg* nil)
 
-(defun init-dbg ()
+(defun clear-dbg ()
   (setf *dbg* nil))
 
 (defun debug-push (obj)
