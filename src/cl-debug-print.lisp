@@ -27,10 +27,10 @@ To clear this variable, use the CLEAR-DBG function.")
 (defun debug-print (pre-exp exp)
   (let ((*destination* (or *destination* *standard-output*)))
     (if *use-describe*
-        (format *destination* "~S => ~A~%" pre-exp
+        (format *destination* "~A => ~A~%" pre-exp
                 (with-output-to-string (s)
                   (describe exp s)))
-        (format *destination* "~S => ~S~%" pre-exp exp)))
+        (format *destination* "~A => ~S~%" pre-exp exp)))
   exp)
 
 (defun debug-print-reader (stream char1 char2)
