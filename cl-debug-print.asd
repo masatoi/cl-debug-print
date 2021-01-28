@@ -3,7 +3,7 @@
 |#
 
 (defsystem "cl-debug-print"
-  :version "0.1.0"
+  :version "0.2.0"
   :author "Satoshi Imai"
   :license "MIT"
   :depends-on ("cl-syntax")
