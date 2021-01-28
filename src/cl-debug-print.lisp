@@ -17,7 +17,7 @@
 (defvar *use-describe* nil
   "When *USE-DESCRIBE* is true, describe is used for debug prints.")
 
-(defvar *destination* *standard-output*
+(defvar *destination* nil
   "*DESTINATION* allows to configure destination stream for debug prints.")
 
 (defvar *dbg* nil
@@ -25,11 +25,12 @@
 To clear this variable, use the CLEAR-DBG function.")
 
 (defun debug-print (pre-exp exp)
-  (if *use-describe*
-      (format *destination* "~S => ~A~%" pre-exp
-              (with-output-to-string (s)
-                (describe exp s)))
-      (format *destination* "~S => ~S~%" pre-exp exp))
+  (let ((*destination* (or *destination* *standard-output*)))
+    (if *use-describe*
+        (format *destination* "~S => ~A~%" pre-exp
+                (with-output-to-string (s)
+                  (describe exp s)))
+        (format *destination* "~S => ~S~%" pre-exp exp)))
   exp)
 
 (defun debug-print-reader (stream char1 char2)
