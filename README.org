@@ -14,7 +14,7 @@ ros install masatoi/cl-debug-print
 
 #+BEGIN_SRC lisp
 (ql:quickload :cl-debug-print)
-(cl-syntax:use-syntax cl-debug-print:debug-print-syntax)
+(debug-print:use-debug-print)
 
 ;;; Debug print
 

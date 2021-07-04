@@ -11,7 +11,8 @@
            #:*destination*
            #:*dbg*
            #:clear-dbg
-           #:debug-print-syntax))
+           #:debug-print-syntax
+           #:use-debug-print))
 (in-package :cl-debug-print)
 
 (defvar *use-describe* nil
@@ -54,3 +55,7 @@ To clear this variable, use the CLEAR-DBG function.")
   (:merge :standard)
   (:dispatch-macro-char #\# #\> #'debug-print-reader)
   (:dispatch-macro-char #\# #\! #'debug-push-reader))
+
+(defun use-debug-print ()
+  (cl-syntax:use-syntax debug-print-syntax)
+  t)
